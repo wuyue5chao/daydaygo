@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+@mixin inline-block{
+  display: inline-block;
+  @if $legacy-support-for-ie{
+    *display: inline; *zoom: 1;
+  }
+}
+
+//px-to-rem
+@mixin font-size($target){
+  //font-size: $target;
+  font-size: ($target / $browser-default-font-size) * 1rem;
+}
+
+@mixin remCalc($property, $values...){
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max{
+    $value: strip-units(nth($values, $i));
+    $pxValues: #{$pxValues + $value}px;
+
+    @if $i < $max{
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  @for $i from 1 through $max{
+    $value: strip-units(nth($values, $i));
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $remValues: #{$remValues + $value / $browser-default-font-size}rem;
+
+    @if $i < $max{
+      $remValues: #{$remValues + " "};
+    }
+  }
+
+  //#{$property}: $pxValues;
+  #{$property}: $remValues;
+
+  //margin:10px 0 ==> @include remCalc(margin,10,0);
+}
+
+//用border生成三角形
+@mixin triangle($borderColor, $direction: top, $size: 10px){  //设置默认值，未设置的参数放在前面
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+
+  @if $direction == top {
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  }
+  @else if $direction == right {
+    border-left: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  }
+  @else if $direction == bottom {
+    border-top: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  }
+  @else if $direction == left {
+    border-right: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  }
+  @else if $direction == 1 {  //直角三角形 左上
+    border-top: $size solid $borderColor;
+    border-right: $size dashed transparent;
+  }
+  @else if $direction == 2 {  //直角三角形 右上
+    border-top: $size solid $borderColor;
+    border-left: $size dashed transparent;
+  }
+  @else if $direction == 3 {  //直角三角形 左下
+    border-bottom: $size solid $borderColor;
+    border-right: $size dashed transparent;
+  }
+  @else if $direction == 4 {  //直角三角形 右下
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+  }
+}
+
+@mixin flex-box($justify:center,$align:center){
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin mb($value){
+  @include remCalc(margin-bottom,$value);
+}
+
+@mixin arrow($direction:right, $size:7, $width:1px, $color:#888){
+  content: '';
+  @include inline-block;
+  @include remCalc(width,$size);
+  @include remCalc(height,$size);
+  border-top: $width solid $color;
+  border-right: $width solid $color;
+
+  @if $direction == right {
+    transform: rotate(45deg);
+  }
+  @else if $direction == left {
+    transform: rotate(-135deg);
+  }
+  @else if $direction == up {
+    transform: rotate(-45deg);
+  }
+  @else if $direction == down {
+    transform: rotate(135deg);
+  }
+
+  @include remCalc(margin,0,2);
+}
+
+@mixin mark($color:$blue,$size:10){
+  content: '';
+  @include inline-block;
+  @include remCalc(width,$size);
+  @include remCalc(height,$size/2);
+  border-left: 2px solid $color;
+  border-bottom: 2px solid $color;
+  transform: rotate(-45deg);
+  @include remCalc(margin,0,2);
+}
+
+@mixin icon-subbar($size:18,$width:2, $color:$dark-gray){
+  position: relative;
+  @include inline-block;
+  @extend %border-box;
+  @include remCalc(width,$size);
+  @include remCalc(height,$size);
+  &::before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    display: block;
+    @include remCalc(width,$size);
+    @include remCalc(height,$width);
+    @include remCalc(margin-top,-$width/2);
+    background: $color;
+  }
+}
+
+@mixin icon-plus($size:18, $width:2, $color:$dark-gray){
+  position: relative;
+  @include inline-block;
+  @extend %border-box;
+  @include remCalc(width,$size);
+  @include remCalc(height,$size);
+  &::before, &::after{
+    content:'';
+    position: absolute;
+    top: 50%;
+    display: block;
+    @include remCalc(width,$size);
+    @include remCalc(height,$width);
+    background: $color;
+  }
+  &::before{
+    left: 0;
+  }
+  &::after{
+    transform: rotate(90deg);
+  }
+}
+
+@mixin icon-hamburger($width:18, $size:2px, $color:$dark-gray){
+  @include inline-block;
+  @extend %border-box;
+  position: relative;
+  border-bottom: $size solid $color;
+  border-top: $size solid $color;
+  @include remCalc(width, $width);
+  @include remCalc(height, $width - 2);
+  &::after{
+    content: '';
+    @include inline-block;
+    width: 100%;
+    height: $size;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -$size/2;
+    background: $color;
+  }
+}
+
+@mixin dot($size:4, $color:$white){
+  @include inline-block;
+  @include remCalc(width,$size);
+  @include remCalc(height,$size);
+  border-radius: 50%;
+  background: $color;
+}
+
+//header style
+@mixin header-style($height: 44px, $fontSize: 16px){
+  height: $height;
+  text-align: center;
+  border-bottom: $border-light;
+  @extend %border-box;
+  @include remCalc(padding,0,10);
+  h2, .title{
+    height: $height;
+    line-height:$height;
+    font-size: pxTorem($fontSize);
+  }
+  > .icons{
+    position: absolute;
+    top:0;
+    width: $height;
+    height: $height;
+    line-height: $height;
+    &:first-child{
+      left: 0;
+    }
+    &:last-child{
+      right: 0;
+    }
+  }
+}

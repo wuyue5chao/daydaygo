@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/habits/index",
+    "pages/set/index",
+    "pages/add/index",
+    "pages/detail/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#fefefe",
+    "navigationBarTitleText": "DayDayGo",
+    "backgroundColor": "#f5f6f7",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "TODAY"
+      },
+      {
+        "pagePath": "pages/habits/index",
+        "text": "HABITS"
+      },
+      {
+        "pagePath": "pages/set/index",
+        "text": "SET"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "LOGS"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

@@ -1,0 +1,42 @@
+<view class="container">
+  <view>mine</view>
+</view>
+
+<view>hello {{name}}!</view>
+<button bindtap='changeName'>Click Me!</button>
+
+<view>
+  <view class="actgroup">
+        <view class="actbox">
+            <text class='act-lf'>行为名称</text>
+            <view class='act-rt'><input type="text" placeholder="请输入行为名称" value=""/></view>
+        </view>
+    </view>
+    <view class="actgroup">
+      <view class="tip">是否有益</view>
+        <view class="actbox">
+            <text class='act-lf fontgreen'>有益</text>
+            <view class='act-rt'>
+              <icon class="icon-mark"></icon>
+            </view>
+        </view>
+        <view class="actbox">
+            <text class='act-lf fontred'>无益</text>
+            <view class='act-rt'>
+              <icon class="icon-mark"></icon>
+            </view>
+        </view>
+    </view>
+    <view class="actgroup">
+        <view class="actbox">
+            <text class='act-lf'>量化记录</text>
+            <view class='act-rt'>
+              <switch></switch>
+            </view>
+        </view>
+        <view class='tip'>
+          <view>记录此行为具体的完成数量</view>
+          <view>关闭量化记录，则简单记录是否做了此行为</view>
+        </view>
+    </view>
+</view>

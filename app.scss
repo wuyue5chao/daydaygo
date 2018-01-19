@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+//Vendors normalize
+@import "sass/vendors/normalize";
+
+//Vendors Dependencies
+
+//Helpers
+@import "sass/helpers/parameters";  // 变量声明
+@import "sass/helpers/functions";   // @function
+@import "sass/helpers/mixins";      // @mixin
+
+//Base
+@import "sass/base/reset";  //global
+@import "sass/helpers/extend";      // %
+
+//Components
+@import "sass/components/icons";  //组件样式
+@import "sass/components/switch";
+@import "sass/components/footer";
+@import "sass/components/header";
+@import "sass/components/navigation";
+@import "sass/components/canlender";
+@import "sass/components/commontab";
+@import "sass/components/thickbox";
+
+//Pages
+@import "sass/pages/index";  //页面样式
+@import "sass/pages/detail";
+@import "sass/pages/add";
+@import "sass/pages/set";
+@import "sass/pages/logs";
+
+//Layout
+@import "sass/layout/responsive";   //媒体查询
+
+
+

@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+
+<view class='today-list'>
+  <view class='item'>
+    <view class="itm-habit">
+      <view class="h-icon">
+        <view class="h-circle pass">
+          <view>200</view>
+          <view class='unit'>个</view>
+        </view>
+      </view>
+      <view class="h-info">
+        <view class="name"><text>空中自行车</text></view>
+        <view class="log">第一天 坚持！</view>
+      </view>
+      <view class="h-set">
+        <a href="detail.html">detail</a>
+      </view>
+		</view>
+    <progress percent='50' backgroundColor="#bbb" activeColor='#36C336'/>
+    <view class="itm-sets">
+      <view class="set-lists">
+        <view class='option'>删除</view>
+        <view class='option'>计数</view>
+        <view class='option'>跳过</view>
+        <view class='option'>备注</view>
+      </view>
+    </view>
+  </view>
+  <view class='item'>
+    <view class="itm-habit">
+      <view class="h-icon">
+        <view class="h-circle pass">
+          <view>200</view>
+          <view class='unit'>个</view>
+        </view>
+      </view>
+      <view class="h-info">
+        <view class="name"><text>空中自行车</text></view>
+        <view class="log">第一天 坚持！</view>
+      </view>
+      <view class="h-set">
+        <a href="detail.html">detail</a>
+      </view>
+		</view>
+    <progress percent='50' backgroundColor="#bbb" activeColor='#36C336'/>
+    <view class="itm-sets">
+      <view class="set-lists">
+        <view class='option'>删除</view>
+        <view class='option'>计数</view>
+        <view class='option'>跳过</view>
+        <view class='option'>备注</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+/*header*/
+header{
+  @extend %fixed;
+  top: 0;
+  @include header-style;
+}

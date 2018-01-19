@@ -1,0 +1,29 @@
+<view class="habitsWrap">
+  <view class='title'>激活中</view>
+  <view class="habits-list">
+      <view class="itm-habit">
+          <view class="itm-info">
+              <view class='tit'>空中自行车</view>
+              <view class='tags'>
+                  <text class="fontgreen">有益</text>
+                  <text class='txt'>记录数量</text>
+              </view>
+          </view>
+          <view class='itm-opt'>
+              <icon class="icon-arrow-rt"></icon>
+          </view>
+      </view>
+      <view class="itm-habit">
+          <view class="itm-info">
+              <view class='tit'>晚睡</view>
+              <view class='tags'>
+                  <text class="fontred">无益</text>
+                  <text class='txt'>记录是/否</text>
+              </view>
+          </view>
+          <view class='itm-opt'>
+              <icon class="icon-arrow-rt"></icon>
+          </view>
+      </view>
+  </view>
+</view>
